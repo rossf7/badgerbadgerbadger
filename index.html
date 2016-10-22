@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>badgerbadgerbadger</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-md-6 col-md-offset-1"> 
+        <h1>Container {{.Hostname}}</h1>
+        <h3>Image</h3>
+        <p>Docker image {{.Image}}</p>
+        <p>
+          <a href="https://microbadger.com/images/{{.Image}}" title="Get your own image badge on microbadger.com"><img src="https://images.microbadger.com/badges/image/{{.Image}}.svg"></a>
+          <a href="https://microbadger.com/images/{{.Image}}" title="Get your own version badge on microbadger.com"><img src="https://images.microbadger.com/badges/version/{{.Image}}.svg"></a>
+          <a href="https://microbadger.com/images/{{.Image}}" title="Get your own commit badge on microbadger.com"><img src="https://images.microbadger.com/badges/commit/{{.Image}}.svg"></a>
+        </p>
+       
+        <h3>Video</h3>
+        <p>Found YouTube video {{.YoutubeVideo}} from label com.microbadger.youtube-video.</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{.YoutubeVideo}}" frameborder="0" allowfullscreen></iframe>
+
+        <h3>Labels</h3>
+        <table class="table table-striped">
+          {{ range $label, $value := .Labels }}
+            <tr>
+              <td><code>{{$label}}</code></td>
+              <td><code>{{$value}}</code></td>
+            </tr>
+          {{ end }}
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
